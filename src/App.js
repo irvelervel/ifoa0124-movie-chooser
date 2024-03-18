@@ -38,9 +38,9 @@ class App extends Component {
                     <option>Iron man</option>
                     <option>Dr. Strange</option>
                     <option>Venom</option>
-                    <option>Thor: Love & Thunder</option>
+                    <option>Thor Love & Thunder</option>
                     <option>Deadpool</option>
-                    <option>Guardiani della Galassia Vol.1</option>
+                    <option>Guardians of the Galaxy</option>
                   </Form.Select>
                 </Form.Group>
               </Form>

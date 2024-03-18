@@ -47,6 +47,27 @@ class MovieCard extends Component {
     this.fetchMovieInfo()
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    // componentDidUpdate è un altro metodo di lifecycle, come render() e come componentDidMount()
+    // componentDidUpdate viene automaticamente invocato, se esiste, ogni volta che cambia lo stato e ogni volta che cambiano le props
+    // i due parametri, prevProps e prevState sono importantissimi e devono venire utilizzati OGNI volta che si scrive un componentDidUpdate
+    // sono di fatto la differenza tra render() e componentDidUpdate()
+    // è sempre una pessima prassi inserire in render() un metodo che lancerà un setState -> loop infinito
+    // la nostra fetchMovieInfo() dovrebbe ascoltare un cambio di PROPS, in modo da potersi re-invocare ogni volta che il titolo
+    // del film cambia
+    // quello che non va bene, però, è che per colpa del setState noi RI-ENTRIAMO nel render()!
+    // il bello di componentDidUpdate è che noi possiamo distinguere tra i casi:
+    // 1) è cambiata una prop
+    // 2) è cambiato lo stato
+    //
+    // ora "ingabbio" l'invocazione di fetchMovieInfo() in un if()
+    // questo if la farà re-invocare SOLAMENTE quando cambiano le props, e NON quando cambia lo stato
+    if (prevProps.movieTitle !== this.props.movieTitle) {
+      // ...solo quando c'è stato un cambio della prop movieTitle
+      this.fetchMovieInfo()
+    }
+  }
+
   render() {
     return (
       <>
