@@ -1,6 +1,7 @@
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import MovieNavbar from './components/MovieNavbar'
+import MovieCard from './components/MovieCard'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -43,6 +44,11 @@ class App extends Component {
                   </Form.Select>
                 </Form.Group>
               </Form>
+            </Col>
+          </Row>
+          <Row className="justify-content-center">
+            <Col xs={12} md={8} lg={6}>
+              <MovieCard movieTitle={this.state.movieTitle} />
             </Col>
           </Row>
         </Container>
